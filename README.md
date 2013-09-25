@@ -15,7 +15,6 @@ $ git log --format=oneline
 503e1edc1e4cef17e0f7dbaad342d440d6240144 Indexed support page to sitemap
 c1de9f6b7c50645441228b72da63e45edc1834b8 Created support page
 f0b6fecf1cfea4ca3b1af3fe2cd35fee14ac967b Added home page
-7e357fbd40d9664496198e6716e474339ca0dc09 Initial commit
 $ # Sync with master (as opposed to `git rebase`)
 $ git merge master # Interchangable with `git pull`
 $ git mergetool -y; git commit # Deal with *one* set of merge conflicts
@@ -34,7 +33,6 @@ $ # Changes are squashed to one commit
 $ git log --format=oneline
 0d329440700e73e6edd6409da515b4a47e920ef3 Added support page Merge branch 'master' into dev/add.support.page Indexed support page to sitemap Created support page
 f0b6fecf1cfea4ca3b1af3fe2cd35fee14ac967b Added home page
-7e357fbd40d9664496198e6716e474339ca0dc09 Initial commit
 ```
 
 ## Installation

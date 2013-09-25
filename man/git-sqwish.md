@@ -26,10 +26,6 @@ git-sqwish(1) -- Squash changes in a branch
      0 files changed
      create mode 100644 abc
      create mode 100644 def
-    $ git branch
-    * dev/my.feature.squashed
-      dev/my.feature
-      master
 
 ## AUTHOR
 

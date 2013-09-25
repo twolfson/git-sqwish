@@ -2,19 +2,13 @@
 
 git squash for everyday use; no more merge conflicts, no more headaches.
 
-## Getting Started
-Install the module with: `npm install git-sqwish`
+Designed use `git merge` during development and avoid `git rebase`'s repetitive merge conflicts altogether.
 
-```javascript
-var git_sqwish = require('git-sqwish');
-git_sqwish.awesome(); // "awesome"
-```
+## Installation
+TODO: One line + manual
 
-## Documentation
-_(Coming soon)_
-
-## Examples
-_(Coming soon)_
+## Architecture
+Checkout `.squashed` branch based off of `master`
 
 ## Donating
 Support this project and [others by twolfson][gittip] via [gittip][].
@@ -25,7 +19,7 @@ Support this project and [others by twolfson][gittip] via [gittip][].
 [gittip]: https://www.gittip.com/twolfson/
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Test via `make test`.
 
 ## Attribution
 `man/Readme.md`, `man/manning-up.sh`, and `Makefile` are forked from [git-extras][], a broader collection of `git` utilities.

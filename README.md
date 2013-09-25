@@ -65,7 +65,16 @@ $ git sqwish # Now available for invocation
 ```
 
 ## Architecture
-Checkout `.squashed` branch based off of `master`
+`git-sqwish` takes the same vision as your normal squash technique (`git rebase` + `git rebase -i`). The end goal is to have all applied changes on top of the latest `master` branch. There is no need for history and no need for dealing with historical merge conflicts. The high level details are:
+
+1. Verify current branch is clean
+2. Verify current branch is ahead of `master` and won't conflict with a dry merge
+3. Checkout `.squashed` branch based off of `master`
+4. Copy state of files from original branch to `.squashed` branch
+5. Collect commit messages from original branch into collective commit message
+6. If `message` was not provided, open `commit` prompt with collective message
+7. Commit changes to `.squashed` branch
+8. Disco.
 
 ## Donating
 Support this project and [others by twolfson][gittip] via [gittip][].

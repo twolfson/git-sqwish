@@ -19,27 +19,28 @@ fixture_dir() {
 # A branch ahead of master
 fixture_dir 'branch-ahead'
 
+  # when sqwished with a message
+
+    # is on a `.squashed` branch
+    # TODO: Renamed to .sqwished
+
+    # is squashed (one commit ahead of `master)
+
+    # has the given commit message
+
+    # has the changes from previous branch
+
   # when sqwished
   # TODO: Use message to start and open issue to adress testing this case (as it is used every day)
   # $BIN_DIR/git-sqwish master
-  expect $TEST_DIR/expect_tmp.sh 1> /dev/null
-  cat message.txt
-  git status --porcelain
+  # TODO: Resume work from 917a67b
+  # expect $TEST_DIR/expect_tmp.sh 1> /dev/null
+  # cat message.txt
+  # git status --porcelain
 
     # prompts for a message
 
     # when given a message
-
-      # is on a `.squashed` branch
-      # TODO: Renamed to .sqwished
-
-      # is squashed (one commit ahead of `master)
-
-      # has the given commit message
-
-      # has the changes from previous branch
-
-  # when sqwished with a message
 
       # has the message appended to previous logs
 

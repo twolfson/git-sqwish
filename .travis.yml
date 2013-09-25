@@ -1,0 +1,11 @@
+language: bash
+
+install:
+   # Spit out the git version
+  - git --version
+script:
+  # Run the test via make
+  - make test
+
+notifications:
+  email: false

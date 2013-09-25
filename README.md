@@ -14,23 +14,19 @@ $ git branch
 $ # Make normal changes
 $ echo "<p>Email us</p>" > support.html; git add support.html
 $ git commit -m "Created support page"
-[dev/add.support.page 473c8bd] Created support page
+[dev/add.support.page c1de9f6] Created support page
 $ # Introduce conflictable code
 $ echo "<xml>support.html</xml>" >> sitemap.xml; git add sitemap.xml
 $ git commit -m "Indexed support page to sitemap"
-[dev/add.support.page 327ca92] Indexed support page to sitemap
+[dev/add.support.page 503e1ed] Indexed support page to sitemap
 $ # Sync with master (as opposed to `git rebase`)
 $ git merge master # Interchangable with `git pull`
-Already up-to-date.
-$ # Deal with *one* merge conflict
-$ git commit
-# On branch dev/add.support.page
-nothing to commit, working directory clean
+$ git mergetool -y # Deal with *one* merge conflict
+$ git commit # Commit resolved changes
+[dev/add.support.page 4757ef1] Merge branch 'master' into dev/add.support.page
 $ # Squash changes
 $ git sqwish master "Added support page"
-[dev/add.support.page.squashed 4ce1729] Added support page Indexed support page to sitemap Created support page
- 2 files changed, 2 insertions(+)
- create mode 100644 support.html
+[dev/add.support.page.squashed 0d32944] Added support page Merge branch 'master' into dev/add.support.page Indexed support page to sitemap Created support page
 $ # History is preserved on original branch
 $ git branch
   dev/add.support.page
@@ -38,8 +34,9 @@ $ git branch
   master
 $ # Changes are squashed to one commit
 $ git log --format=oneline
-4ce17292b31795e5da11a0343d9500c74eb70b6f Added support page Indexed support page to sitemap Created su
-0373e80645f35c70418ed5a0e247623be21f89ec Initial commit
+0d329440700e73e6edd6409da515b4a47e920ef3 Added support page Merge branch 'master' into dev/add.support.page Indexed support page to sitemap Created support page
+f0b6fecf1cfea4ca3b1af3fe2cd35fee14ac967b Added home page
+7e357fbd40d9664496198e6716e474339ca0dc09 Initial commit
 ```
 
 ## Installation

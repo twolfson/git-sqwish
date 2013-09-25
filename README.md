@@ -4,8 +4,6 @@ git squash for everyday use; no more merge conflicts, no more headaches.
 
 Designed use `git merge` during development and avoid `git rebase`'s repetitive merge conflicts altogether.
 
-TODO: Revisit `man` page
-
 ```bash
 $ # On a development branch
 $ git branch

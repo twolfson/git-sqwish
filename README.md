@@ -10,18 +10,15 @@ $ git branch
 * dev/add.support.page
   master
 
-$ # Make normal changes
-$ echo "<p>Email us</p>" > support.html; git add support.html
-$ git commit -m "Created support page"
-[dev/add.support.page c1de9f6] Created support page
-$ # Introduce conflictable code
-$ echo "<xml>support.html</xml>" >> sitemap.xml; git add sitemap.xml
-$ git commit -m "Indexed support page to sitemap"
-[dev/add.support.page 503e1ed] Indexed support page to sitemap
+$ # With normal and conflicting changes
+$ git log --format=oneline
+503e1edc1e4cef17e0f7dbaad342d440d6240144 Indexed support page to sitemap
+c1de9f6b7c50645441228b72da63e45edc1834b8 Created support page
+f0b6fecf1cfea4ca3b1af3fe2cd35fee14ac967b Added home page
+7e357fbd40d9664496198e6716e474339ca0dc09 Initial commit
 $ # Sync with master (as opposed to `git rebase`)
 $ git merge master # Interchangable with `git pull`
-$ git mergetool -y # Deal with *one* set of merge conflicts
-$ git commit # Commit resolved changes
+$ git mergetool -y; git commit # Deal with *one* set of merge conflicts
 [dev/add.support.page 4757ef1] Merge branch 'master' into dev/add.support.page
 
 $ # Squash changes

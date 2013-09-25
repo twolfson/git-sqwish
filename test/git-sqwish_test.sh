@@ -2,6 +2,7 @@
 
 # Navigate to test directory
 TEST_DIR=$PWD/test
+BIN_DIR=$PWD/bin
 
 # Move any test .git directories back to dotgit
 make move-git-to-dotgit > /dev/null
@@ -18,6 +19,7 @@ fixture_dir() {
 fixture_dir 'branch-ahead'
 
   # when sqwished
+  $BIN_DIR/git-sqwish master
 
     # prompts for a message
 
@@ -38,6 +40,13 @@ fixture_dir 'branch-ahead'
       # has the message appended to previous logs
 
       # has the changes from previous branch
+
+  # when sqwished without a master branch
+
+    # exits with a non-zero code
+
+    # informs user about missing parameter
+
 
 # A dirty branch
 

@@ -12,6 +12,7 @@ fixture_dir() {
   TMP_DIR=$(mktemp -d)
   cp -r "$TEST_DIR"/test_files/$1/* $TMP_DIR
   cd $TMP_DIR
+  echo $TMP_DIR
   test -d dotgit && mv dotgit .git
 }
 
@@ -19,11 +20,12 @@ fixture_dir() {
 fixture_dir 'branch-ahead'
 
   # when sqwished
-  $BIN_DIR/git-sqwish master
+  # $BIN_DIR/git-sqwish master
+  expect $TEST_DIR/expect_tmp.sh 1> /dev/null
+  cat message.txt
+  git status --porcelain
 
     # prompts for a message
-
-    # has past commit messages in logs
 
     # when given a message
 

@@ -77,9 +77,16 @@ fixture_dir 'branch-dirty'
     test "$(git symbolic-ref --short HEAD)" == "dev/update.message" || echo "\`git-sqwish\` moved off of original branch on dirty branch" 1>&2
 
 # A divergent branch
+fixture_dir 'branch-divergent'
 
   # when sqwished
+  OUTPUT="$($BIN_DIR/git-sqwish master 2>&1)"
 
     # exits with a non-zero code
+    test "$?" != 0 || echo "$? == 0 for divergent branch" 1>&2
 
-    # informs user about divergent code
+    # informs user about divergent branch
+    test "$OUTPUT" == "This branch is not up-to-date with master. Please merge in changes." || echo "\`git sqwish\` did not inform user of unmerged changes for divergent branch" 1>&2
+
+    # is on the original branch
+    test "$(git symbolic-ref --short HEAD)" == "dev/update.message" || echo "\`git-sqwish\` moved off of original branch on divergent branch" 1>&2

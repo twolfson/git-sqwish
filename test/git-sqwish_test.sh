@@ -62,12 +62,21 @@ fixture_dir 'branch-ahead'
     test "$(git symbolic-ref --short HEAD)" == "dev/update.message" || echo "\`git-sqwish\` moved off of original branch in master-less command" 1>&2
 
 # A dirty branch
+fixture_dir 'branch-dirty'
 
   # when sqwished
+  OUTPUT="$($BIN_DIR/git-sqwish master 2>&1)"
 
     # exits with a non-zero code
+    test "$?" != 0 || echo "$? == 0 for dirty branch" 1>&2
 
     # informs user about dirty branch
+    echo "$OUTPUT"
+    test "$OUTPUT" == "Working directory is dirty. Please stash or commit changes." || echo "\`git sqwish\` did not inform user of pending changes for dirty branch" 1>&2
+
+    # is on the original branch
+    echo "$(git symbolic-ref --short HEAD)"
+    test "$(git symbolic-ref --short HEAD)" == "dev/update.message" || echo "\`git-sqwish\` moved off of original branch in dirty branch" 1>&2
 
 # A divergent branch
 

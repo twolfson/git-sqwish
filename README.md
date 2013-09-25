@@ -9,6 +9,7 @@ $ # On a development branch
 $ git branch
 * dev/add.support.page
   master
+
 $ # Make normal changes
 $ echo "<p>Email us</p>" > support.html; git add support.html
 $ git commit -m "Created support page"
@@ -22,9 +23,11 @@ $ git merge master # Interchangable with `git pull`
 $ git mergetool -y # Deal with *one* set of merge conflicts
 $ git commit # Commit resolved changes
 [dev/add.support.page 4757ef1] Merge branch 'master' into dev/add.support.page
+
 $ # Squash changes
 $ git sqwish master "Added support page"
 [dev/add.support.page.squashed 0d32944] Added support page Merge branch 'master' into dev/add.support.page Indexed support page to sitemap Created support page
+
 $ # History is preserved on original branch
 $ git branch
   dev/add.support.page

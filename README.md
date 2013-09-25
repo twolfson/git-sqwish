@@ -40,7 +40,31 @@ f0b6fecf1cfea4ca3b1af3fe2cd35fee14ac967b Added home page
 ```
 
 ## Installation
-TODO: One line + manual
+One line install:
+
+```bash
+(cd /tmp && git clone --depth 1 https://github.com/twolfson/git-sqwish && cd git-sqwish && sudo make install)
+```
+
+Manual install:
+
+```bash
+$ # Clone the repository
+$ git clone --depth 1 https://github.com/twolfson/git-sqwish
+Cloning into 'git-sqwish'...
+...
+Resolving deltas: 100% (13/13), done.
+$ # Go into the directory
+$ cd git-sqwish
+$ # Install the script
+$ sudo make install
+... installing bins to /usr/local/bin
+... installing man pages to /usr/local/share/man/man1
+... installing git-sqwish
+cp -f man/git-*.1 "/usr/local/share/man/man1"
+cp -f etc/bash_completion.sh /etc/bash_completion.d/git-sqwish
+$ git sqwish # Now available for invocation
+```
 
 ## Architecture
 Checkout `.squashed` branch based off of `master`

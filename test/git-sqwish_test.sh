@@ -12,8 +12,30 @@
 
       # is on a `.squashed` branch
 
+      # is squashed (one commit ahead of `master)
+
       # has the given commit message
 
-      # has the changes from
+      # has the changes from previous branch
 
-      # is squashed (one commit ahead of `master)
+  # when sqwished with a message
+
+      # has the message appended to previous logs
+
+      # has the changes from previous branch
+
+# A dirty branch
+
+  # when sqwished
+
+    # exits with a non-zero code
+
+    # informs user about dirty branch
+
+# A divergent branch
+
+  # when sqwished
+
+    # exits with a non-zero code
+
+    # informs user about divergent code

@@ -81,13 +81,8 @@ Support this project and [others by twolfson][gittip] via [gittip][].
 [gittip-badge]: https://rawgithub.com/twolfson/gittip-badge/master/dist/gittip.png
 [gittip]: https://www.gittip.com/twolfson/
 
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Test via `make test`.
-
 ## Attribution
-`man/Readme.md`, `man/manning-up.sh`, and `Makefile` are forked from [git-extras][], a broader collection of `git` utilities.
-
-Those files are [licensed under the MIT License][git-extras-license].
+`man/Readme.md`, `man/manning-up.sh`, and `Makefile` are forked from [git-extras][], a broader collection of `git` utilities. Those files are [licensed under the MIT License][git-extras-license].
 
 [git-extras]: https://github.com/visionmedia/git-extras
 [git-extras-license]: https://github.com/visionmedia/git-extras/blob/a55cc84a1145936535e00153ac4cdd6a1f6812cc/LICENSE

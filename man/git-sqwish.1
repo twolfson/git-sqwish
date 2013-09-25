@@ -1,22 +1,22 @@
 .\" generated with Ronn/v0.7.3
 .\" http://github.com/rtomayko/ronn/tree/0.7.3
 .
-.TH "GIT\-SQWISH" "1" "June 2013" "" ""
+.TH "GIT\-SQWISH" "1" "September 2013" "" ""
 .
 .SH "NAME"
-\fBgit\-sqwish\fR \- Compress changes in a branch
+\fBgit\-sqwish\fR \- Squash changes in a branch
 .
 .SH "SYNOPSIS"
 \fBgit\-sqwish\fR <master\-branch> [<commit\-message>]
 .
 .SH "DESCRIPTION"
-Take all commits in a branch, compress them into \fIone\fR commit on top of the \fBmaster\-branch\fR\.
+Take all commits in a branch, compress them into \fIone\fR commit on top of the \fBmaster\-branch\fR, apply to \fB$CURRENT_BRANCH\.squashed\fR branch\.
 .
 .SH "OPTIONS"
 <master\-branch>
 .
 .P
-Branch to sqwish commits on top of\.
+Branch to squash commits on top of\.
 .
 .P
 <commit\-message>
@@ -29,13 +29,14 @@ If commit\-message is given, commit will be executed automatically and message w
 .nf
 
 $ git sqwish master
-Switched to a new branch \'tmp\.1OSwoYazcoc7Df\'
-Switched to and reset branch \'dev/my\.feature\'
-[dev/my\.feature 97b70be] Added abc\. Added def\.
+[dev/my\.feature\.squashed 97b70be] Added abc\. Added def\.
  0 files changed
  create mode 100644 abc
  create mode 100644 def
-Deleted branch tmp\.1OSwoYazcoc7Df (was ade0637)\.
+$ git branch
+* dev/my\.feature\.squashed
+  dev/my\.feature
+  master
 .
 .fi
 .
@@ -43,7 +44,7 @@ Deleted branch tmp\.1OSwoYazcoc7Df (was ade0637)\.
 Written by Todd Wolfson <\fItodd@twolfson\.com\fR>
 .
 .SH "REPORTING BUGS"
-<\fIhttps://github\.com/visionmedia/git\-extras/issues\fR>
+<\fIhttps://github\.com/twolfson/git\-sqwish/issues\fR>
 .
 .SH "SEE ALSO"
-<\fIhttps://github\.com/visionmedia/git\-extras\fR>
+<\fIhttps://github\.com/twolfson/git\-sqwish\fR>

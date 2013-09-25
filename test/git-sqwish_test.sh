@@ -12,7 +12,6 @@ fixture_dir() {
   TMP_DIR=$(mktemp -d)
   cp -r "$TEST_DIR"/test_files/$1/* $TMP_DIR
   cd $TMP_DIR
-  echo $TMP_DIR
   test -d dotgit && mv dotgit .git
 }
 
@@ -20,20 +19,21 @@ fixture_dir() {
 fixture_dir 'branch-ahead'
 
   # when sqwished with a message
+  $BIN_DIR/git-sqwish master "Commit message 1" > /dev/null
 
     # is on a `.squashed` branch
     # TODO: Renamed to .sqwished
+    test "$(git symbolic-ref --short HEAD)" == "dev/update.message.squashed" || echo "\`git-sqwish\` does not move to $BRANCH.squashed" 1>&2
 
     # is squashed (one commit ahead of `master)
+    test "$(git log master..dev/update.message.squashed --format=oneline | wc -l)" == "1" || echo "\`git-sqwish\` did not squash commits to one commit" 1>&2
 
     # has the given commit message
 
     # has the changes from previous branch
 
-  # when sqwished
-  # TODO: Use message to start and open issue to adress testing this case (as it is used every day)
-  # $BIN_DIR/git-sqwish master
-  # TODO: Resume work from 917a67b
+  # when sqwished without a message
+  # TODO: Fix this. https://github.com/twolfson/git-sqwish/issues/1
   # expect $TEST_DIR/expect_tmp.sh 1> /dev/null
   # cat message.txt
   # git status --porcelain

@@ -106,7 +106,7 @@ demo:
 	@echo 'git merge master # Interchangable with `git pull`'
 	@echo 'git checkout master -- sitemap.xml # TODO: REPLACE WITH `git mergetool`'
 	@echo '# Deal with *one* merge conflict'
-	@echo 'git commit'
+	@echo 'git commit --no-verify # TODO: REMOVE --no-verify'
 	@echo '# Squash changes'
 	@echo 'git sqwish master "Added support page"'
 	@echo '# History is preserved on original branch'

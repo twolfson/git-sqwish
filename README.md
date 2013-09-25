@@ -4,6 +4,8 @@ git squash for everyday use; no more merge conflicts, no more headaches.
 
 Designed use `git merge` during development and avoid `git rebase`'s repetitive merge conflicts altogether.
 
+TODO: Revisit `man` page
+
 ```bash
 $ # On a development branch
 $ git branch
@@ -11,20 +13,10 @@ $ git branch
   master
 $ # Make normal changes
 $ echo "<p>Email us</p>" > support.html
-$ git add index.html
-# TODO: Flavor text
-$ git commit -m "Created support page"
-# TODO: Flavor text
-$ echo "<p>Copyright info</p>" >> index.html
-$ git add index.html
-# TODO: Flavor text
-$ git commit -m "Added copyright to index.html"
-# TODO: Flavor text
-$ # Make some changes outside of scope
-$ echo "<p>Copyright info</p>" >> index.html
-$ git add index.html
-# TODO: Flavor text
-$ git commit -m "Added copyright to index.html"
+$ git commit -m "Created support page" -- support.html
+$ # Introduce conflictable code
+$ nano sitemap.xml
+$ git commit -m "Added support page to sitemap" -- sitemap.xml
 # TODO: Flavor text
 $ # Sync with master via `git merge` (as opposed to `git rebase`)
 $ git pull origin master
@@ -33,6 +25,15 @@ $ # Deal with *one* merge conflict
 $ git commit
 # TODO: Flavor text
 $ # Squash changes
+$ git sqwish master
+# TODO: Flavor text
+$ # History is preserved on original branch
+$ git branch
+* dev/add.support.page.squashed
+  dev/add.support.page
+  master
+$ # Changes are squashed to one commit
+$ git log --format=oneline
 # TODO: Flavor text
 ```
 

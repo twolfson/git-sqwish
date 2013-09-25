@@ -27,8 +27,16 @@ Support this project and [others by twolfson][gittip] via [gittip][].
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
 
+## Attribution
+`man/Readme.md`, `man/man-template.md`, `man/manning-up.sh`, and `Makefile` are forked from [git-extras][], a broader collection of `git` utilities.
+
+Those files are [licensed under the MIT License][git-extras-license].
+
+[git-extras]: https://github.com/visionmedia/git-extras
+[git-extras-license]: https://github.com/visionmedia/git-extras/blob/a55cc84a1145936535e00153ac4cdd6a1f6812cc/LICENSE
+
 ## Unlicense
-As of Sep 24 2013, Todd Wolfson has released this repository and its contents to the public domain.
+As of Sep 24 2013, Todd Wolfson has released this repository and its unattributed contents to the public domain.
 
 It has been released under the [UNLICENSE][].
 

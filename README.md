@@ -1,4 +1,4 @@
-# git-sqwish
+# git-sqwish [![Build status](https://travis-ci.org/twolfson/git-sqwish.png?branch=master)](https://travis-ci.org/twolfson/git-sqwish)
 
 git squash for everyday use; no more merge conflicts, no more headaches.
 

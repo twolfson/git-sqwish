@@ -3,6 +3,10 @@ language: bash
 install:
    # Spit out the git version
   - git --version
+
+  # Set up the git user
+  - git config --global user.name "Todd Wolfson"
+  - git config --global user.email "todd@twolfson.com"
 script:
   # Run the test via make
   - make test

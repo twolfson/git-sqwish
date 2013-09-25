@@ -31,6 +31,7 @@ fixture_dir 'branch-ahead'
     # when given a message
 
       # is on a `.squashed` branch
+      # TODO: Renamed to .sqwished
 
       # is squashed (one commit ahead of `master)
 

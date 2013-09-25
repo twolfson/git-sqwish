@@ -28,7 +28,7 @@ Support this project and [others by twolfson][gittip] via [gittip][].
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
 
 ## Attribution
-`man/Readme.md`, `man/man-template.md`, `man/manning-up.sh`, and `Makefile` are forked from [git-extras][], a broader collection of `git` utilities.
+`man/Readme.md`, `man/manning-up.sh`, and `Makefile` are forked from [git-extras][], a broader collection of `git` utilities.
 
 Those files are [licensed under the MIT License][git-extras-license].
 

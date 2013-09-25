@@ -1,5 +1,5 @@
-git-sqwish(1) -- Compress changes in a branch
-=============================================
+git-sqwish(1) -- Squash changes in a branch
+===========================================
 
 ## SYNOPSIS
 
@@ -7,13 +7,13 @@ git-sqwish(1) -- Compress changes in a branch
 
 ## DESCRIPTION
 
-  Take all commits in a branch, compress them into _one_ commit on top of the `master-branch`.
+  Take all commits in a branch, compress them into _one_ commit on top of the `master-branch`, apply to `$CURRENT_BRANCH.squashed` branch.
 
 ## OPTIONS
 
   &lt;master-branch&gt;
 
-  Branch to sqwish commits on top of.
+  Branch to squash commits on top of.
 
   &lt;commit-message&gt;
 
@@ -22,13 +22,14 @@ git-sqwish(1) -- Compress changes in a branch
 ## EXAMPLES
 
     $ git sqwish master
-    Switched to a new branch 'tmp.1OSwoYazcoc7Df'
-    Switched to and reset branch 'dev/my.feature'
-    [dev/my.feature 97b70be] Added abc. Added def.
+    [dev/my.feature.squashed 97b70be] Added abc. Added def.
      0 files changed
      create mode 100644 abc
      create mode 100644 def
-    Deleted branch tmp.1OSwoYazcoc7Df (was ade0637).
+    $ git branch
+    * dev/my.feature.squashed
+      dev/my.feature
+      master
 
 ## AUTHOR
 
@@ -36,8 +37,8 @@ Written by Todd Wolfson &lt;<todd@twolfson.com>&gt;
 
 ## REPORTING BUGS
 
-&lt;<https://github.com/visionmedia/git-extras/issues>&gt;
+&lt;<https://github.com/twolfson/git-sqwish/issues>&gt;
 
 ## SEE ALSO
 
-&lt;<https://github.com/visionmedia/git-extras>&gt;
+&lt;<https://github.com/twolfson/git-sqwish>&gt;

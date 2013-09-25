@@ -21,7 +21,7 @@ $ git commit -m "Indexed support page to sitemap"
 [dev/add.support.page 503e1ed] Indexed support page to sitemap
 $ # Sync with master (as opposed to `git rebase`)
 $ git merge master # Interchangable with `git pull`
-$ git mergetool -y # Deal with *one* merge conflict
+$ git mergetool -y # Deal with *one* set of merge conflicts
 $ git commit # Commit resolved changes
 [dev/add.support.page 4757ef1] Merge branch 'master' into dev/add.support.page
 $ # Squash changes

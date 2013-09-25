@@ -74,5 +74,4 @@ else
 fi
 
 # Delete backup branch
-git branch -D $temporary
-
+git branch -D $temporary 1> /dev/null 2> /dev/null

@@ -1,6 +1,6 @@
 # git-sqwish
 
-git squash for everyday use.
+git squash for everyday use; no more merge conflicts, no more headaches.
 
 ## Getting Started
 Install the module with: `npm install git-sqwish`

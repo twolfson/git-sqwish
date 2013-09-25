@@ -4,6 +4,8 @@ BINS = $(wildcard bin/git-*)
 MANS = $(wildcard man/git-*.md)
 MAN_HTML = $(MANS:.md=.html)
 MAN_PAGES = $(MANS:.md=.1)
+DOTGIT_DIRS := $(wildcard test/test_files/*/dotgit)
+GIT_DIRS := $(wildcard test/test_files/*/.git)
 
 docs: $(MAN_HTML) $(MAN_PAGES)
 
@@ -49,5 +51,19 @@ clean: docclean
 docclean:
 	rm -f man/*.1
 	rm -f man/*.html
+
+move-dotgit-to-git:
+	# Moving over the dotgit directories to git directories
+	@$(foreach ORIG_DIR, $(DOTGIT_DIRS), \
+		echo "Moving $(ORIG_DIR) to $(ORIG_DIR)/../.git"; \
+		mv $(ORIG_DIR) $(ORIG_DIR)/../.git; \
+	)
+
+move-git-to-dotgit:
+	# Moving over the git directories to dotgit directories
+	@$(foreach ORIG_DIR, $(GIT_DIRS), \
+		echo "Moving $(ORIG_DIR) to $(ORIG_DIR)/../dotgit"; \
+		mv $(ORIG_DIR) $(ORIG_DIR)/../dotgit; \
+	)
 
 .PHONY: docs clean docclean install uninstall

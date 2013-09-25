@@ -1,6 +1,21 @@
 #!/usr/bin/env bash
 
+# Navigate to test directory
+TEST_DIR=$PWD/test
+
+# Move any test .git directories back to dotgit
+make move-git-to-dotgit > /dev/null
+
+# Create fixture helper
+fixture_dir() {
+  TMP_DIR=$(mktemp -d)
+  cp -r "$TEST_DIR"/test_files/$1/* $TMP_DIR
+  cd $TMP_DIR
+  test -d dotgit && mv dotgit .git
+}
+
 # A branch ahead of master
+fixture_dir 'branch-ahead'
 
   # when sqwished
 

@@ -28,7 +28,9 @@ fixture_dir 'branch-ahead'
     # is squashed (one commit ahead of `master)
     test "$(git log master..dev/update.message.squashed --format=oneline | wc -l)" == "1" || echo "\`git-sqwish\` did not squash commits to one commit" 1>&2
 
-    # has the given commit message
+    # used the given message and previous commits in its commit
+    echo $(git log -n 1 --format=oneline)
+    # test "$(git log master..dev/update.message.squashed --format=oneline)" == " Commit message 1 Updated message.txt" || echo 'a'
 
     # has the changes from previous branch
 

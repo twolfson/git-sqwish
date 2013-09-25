@@ -20,6 +20,7 @@ fixture_dir() {
 fixture_dir 'branch-ahead'
 
   # when sqwished
+  # TODO: Use message to start and open issue to adress testing this case (as it is used every day)
   # $BIN_DIR/git-sqwish master
   expect $TEST_DIR/expect_tmp.sh 1> /dev/null
   cat message.txt

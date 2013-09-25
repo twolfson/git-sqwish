@@ -34,7 +34,6 @@ $ git sqwish master "Added support page"
 [dev/add.support.page.squashed 3b91aa3] Added support page Indexed support page to sitemap Created support page
  2 files changed, 2 insertions(+)
  create mode 100644 support.html
-Deleted branch tmp.1380096494 (was 04382b0).
 $ # History is preserved on original branch
 $ git branch
   dev/add.support.page

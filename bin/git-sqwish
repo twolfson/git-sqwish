@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# If no master branch is provided, complain and leave
+test -z $1 && echo "Master branch required." 1>&2 && exit 1
+
+# Determine the starting branch
+#          Grab the branch                    | ltrim unused rows     Remove asterisk
+original=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/")
+
+# Move to a squashed branch
+git checkout -B "$original".squashed
+
+# Squash all changes
+git-squash-all $*

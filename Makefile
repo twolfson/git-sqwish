@@ -52,6 +52,14 @@ docclean:
 	rm -f man/*.1
 	rm -f man/*.html
 
+test-clean:
+	@echo "# Cleaning up test files"
+	-rm test.stderr
+
+test: test-clean
+	# Running prompt test
+	./test/run.sh
+
 move-dotgit-to-git:
 	# Moving over the dotgit directories to git directories
 	@$(foreach ORIG_DIR, $(DOTGIT_DIRS), \

@@ -12,30 +12,38 @@ $ git branch
 * dev/add.support.page
   master
 $ # Make normal changes
-$ echo "<p>Email us</p>" > support.html
-$ git commit -m "Created support page" -- support.html
-# TODO: Flavor text
+$ echo "<p>Email us</p>" > support.html; git add support.html
+$ git commit -m "Created support page"
+[dev/add.support.page 012233b] Created support page
+ 1 file changed, 1 insertion(+)
+ create mode 100644 support.html
 $ # Introduce conflictable code
-$ nano sitemap.xml
-$ git commit -m "Added support page to sitemap" -- sitemap.xml
-# TODO: Flavor text
-$ # Sync with master via `git merge` (as opposed to `git rebase`)
-$ git pull origin master
-# TODO: Flavor text
+$ echo "<xml>support.html</xml>" >> sitemap.xml; git add sitemap.xml
+$ git commit -m "Indexed support page to sitemap"
+[dev/add.support.page 04382b0] Indexed support page to sitemap
+ 1 file changed, 1 insertion(+)
+$ # Sync with master (as opposed to `git rebase`)
+$ git merge master # Interchangable with `git pull`
+Already up-to-date.
 $ # Deal with *one* merge conflict
 $ git commit
-# TODO: Flavor text
+# On branch dev/add.support.page
+nothing to commit, working directory clean
 $ # Squash changes
-$ git sqwish master
-# TODO: Flavor text
+$ git sqwish master "Added support page"
+[dev/add.support.page.squashed 3b91aa3] Added support page Indexed support page to sitemap Created support page
+ 2 files changed, 2 insertions(+)
+ create mode 100644 support.html
+Deleted branch tmp.1380096494 (was 04382b0).
 $ # History is preserved on original branch
 $ git branch
-* dev/add.support.page.squashed
   dev/add.support.page
+* dev/add.support.page.squashed
   master
 $ # Changes are squashed to one commit
 $ git log --format=oneline
-# TODO: Flavor text
+3b91aa3f67f39cb4fd17e5c97f02b304780ae591 Added support page Indexed support page to sitemap Created su
+da05937e302f2721dceac67dfa1163f9b27f09de Initial commit
 ```
 
 ## Installation

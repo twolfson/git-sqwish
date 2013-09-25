@@ -14,6 +14,7 @@ $ git branch
 $ # Make normal changes
 $ echo "<p>Email us</p>" > support.html
 $ git commit -m "Created support page" -- support.html
+# TODO: Flavor text
 $ # Introduce conflictable code
 $ nano sitemap.xml
 $ git commit -m "Added support page to sitemap" -- sitemap.xml

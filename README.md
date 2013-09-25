@@ -4,6 +4,38 @@ git squash for everyday use; no more merge conflicts, no more headaches.
 
 Designed use `git merge` during development and avoid `git rebase`'s repetitive merge conflicts altogether.
 
+```bash
+$ # On a development branch
+$ git branch
+* dev/add.support.page
+  master
+$ # Make normal changes
+$ echo "<p>Email us</p>" > support.html
+$ git add index.html
+# TODO: Flavor text
+$ git commit -m "Created support page"
+# TODO: Flavor text
+$ echo "<p>Copyright info</p>" >> index.html
+$ git add index.html
+# TODO: Flavor text
+$ git commit -m "Added copyright to index.html"
+# TODO: Flavor text
+$ # Make some changes outside of scope
+$ echo "<p>Copyright info</p>" >> index.html
+$ git add index.html
+# TODO: Flavor text
+$ git commit -m "Added copyright to index.html"
+# TODO: Flavor text
+$ # Sync with master via `git merge` (as opposed to `git rebase`)
+$ git pull origin master
+# TODO: Flavor text
+$ # Deal with *one* merge conflict
+$ git commit
+# TODO: Flavor text
+$ # Squash changes
+# TODO: Flavor text
+```
+
 ## Installation
 TODO: One line + manual
 

@@ -7,9 +7,6 @@ test -z $1 && echo "Master branch required." 1>&2 && exit 1
 #          Grab the branch                    | ltrim unused rows     Remove asterisk
 original=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/")
 
-# Move to a squashed branch
-git checkout -B "$original".squashed
-
 # Start of git-squash-all
 master=$1
 message=$2
@@ -37,6 +34,9 @@ if test -n "$(clean_status)"; then
   exit 1
 fi
 
+# Move to a squashed branch
+git checkout -B "$original".squashed 1> /dev/null 2> /dev/null
+
 # Determine the starting branch
 #          Grab the branch                    | ltrim unused rows     Remove asterisk
 original=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/")
@@ -46,10 +46,10 @@ tmpstr=$(date +%s)
 temporary='tmp.'$tmpstr
 
 # Copy and move ref to temporary branch
-git checkout -b $temporary || exit 1
+git checkout -b $temporary 1> /dev/null 2> /dev/null || exit 1
 
 # Reset original branch to master
-git checkout -B $original $master
+git checkout -B $original $master 1> /dev/null 2> /dev/null
 
 # Pull over all files from temporary branch
 git checkout $temporary -- .

@@ -6,29 +6,29 @@ Designed use `git merge` during development and avoid `git rebase`'s repetitive 
 
 ```bash
 $ # On a development branch
-$ git branch
-* dev/add.support.page
-  master
+$ git branch -v
+* dev/add.support.page 6c5980b Indexed support page to sitemap
+  master               c2d4256 Initial commit
 $ # With normal and conflicting changes
 $ git log --format="%h %s"
-ec4f84a Indexed support page to sitemap
-d12fe6e Created support page
-1b55992 Initial commit
+6c5980b Indexed support page to sitemap
+373cda6 Created support page
+c2d4256 Initial commit
 $ # Sync with master (as opposed to `git rebase`)
 $ git merge master # Interchangable with `git pull`
 $ git mergetool -y; git commit # Deal with *one* set of merge conflicts
 $ # Squash changes
 $ git sqwish master --message "Added support page"
-[dev/add.support.page.sqwished 7fd439d] Added support page
+[dev/add.support.page.sqwished 5e317a0] Added support page
 $ # History is preserved on original branch
-$ git branch
-  dev/add.support.page
-* dev/add.support.page.sqwished
-  master
+$ git branch -v
+  dev/add.support.page          6c5980b Indexed support page to sitemap
+* dev/add.support.page.sqwished 5e317a0 Added support page
+  master                        c2d4256 Initial commit
 $ # Changes are sqwished to one commit
 $ git log --format="%h %s"
-7fd439d Added support page
-1b55992 Initial commit
+5e317a0 Added support page
+c2d4256 Initial commit
 ```
 
 ## Installation

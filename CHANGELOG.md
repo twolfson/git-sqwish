@@ -1,4 +1,6 @@
 # git-sqwish changelog
+0.4.0 - Separated commit subject from body
+
 0.3.1 - Audited and cleaned up code
 
 0.3.0 - Renamed branch extension from squashed to sqwished

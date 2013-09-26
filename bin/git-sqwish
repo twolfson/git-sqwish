@@ -41,25 +41,24 @@ git checkout -B $original.sqwished $master 1> /dev/null 2> /dev/null
 # Pull over all files from original branch
 git checkout $original -- . 1> /dev/null 2> /dev/null
 
-# Collect the commit message of those in $original but not in $master (since..until)
-cat <<EOF > .git/MERGE_MSG
-
-# Below are your previous commit messages
-EOF
-git log $master..$original --format="%s" >> .git/MERGE_MSG
-
-# If there is a message, commit files with input and aggregate messages
+# If there is a message, commit files with message and past commits
 if test -n "$message"; then
-  # Read in the message to memory and delete it
-  aggregate="$(cat .git/MERGE_MSG | grep --invert-match '^# Below are your previous commit messages$')"
-  rm .git/MERGE_MSG
+  # Collect the commit message of those in $original but not in $master (since..until)
+  past_commits="$(git log $master..$original --format='%s')"
 
-  # Automatically commit with input and aggergate messages
+  # Automatically commit with message (subject) and past_commits (body)
   git commit -F- <<EOF
 $message
-$aggregate
+
+$past_commits
 EOF
 else
 # Otherwise, open a pre-filled commit dialog (via .git/MERGE_MSG)
+  cat <<EOF > .git/MERGE_MSG
+
+# Below are your previous commit messages
+EOF
+  git log $master..$original --format="%s" >> .git/MERGE_MSG
+
   git commit
 fi

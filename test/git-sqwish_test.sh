@@ -19,7 +19,7 @@ fixture_dir() {
 fixture_dir 'branch-ahead'
 
   # when sqwished with a message
-  $BIN_DIR/git-sqwish master "Commit message 1" > /dev/null
+  $BIN_DIR/git-sqwish master "Commit message 1"
 
     # is on a `.squashed` branch
     # TODO: Renamed to .sqwished
@@ -29,6 +29,7 @@ fixture_dir 'branch-ahead'
     test "$(git log master..dev/update.message.squashed --format=oneline | wc -l)" == "1" || echo "\`git-sqwish\` did not squash commits to one commit in message-ful command" 1>&2
 
     # used the given message and previous commits in its commit
+    echo "$(git log -n 1 --format=%s)"
     test "$(git log -n 1 --format=%s)" == "Commit message 1 Updated message.txt" || echo "\`git-sqwish\` does not contain provided or past commit messages in message-ful command" 1>&2
 
     # has the changes from previous branch

@@ -1,19 +1,14 @@
 #!/bin/sh
 
+# Rename variables
+master="$1"
+message="$2"
+
 # If no master branch is provided, complain and leave
-test -z $1 && echo "Master branch required." 1>&2 && exit 1
+test -z $master && echo "Master branch required." 1>&2 && exit 1
 
 # Determine the starting branch
-#          Grab the branch                    | ltrim unused rows     Remove asterisk
-original=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/")
-
-# Start of git-squash-all
-master=$1
-message=$2
-
-# Squash all changes
-# If no master branc is provided, complain and leave
-test -z $master && echo "Master branch required." 1>&2 && exit 1
+original=$(git symbolic-ref --short HEAD)
 
 # If the working directory is dirty, complain and leave
 clean_status() {
@@ -34,28 +29,18 @@ if test -n "$(clean_status)"; then
   exit 1
 fi
 
-# Move to a squashed branch
-git checkout -B "$original".squashed 1> /dev/null 2> /dev/null
+# Move to a squashed branch based off of master
+cat message.txt
+git checkout -B $original.squashed $master 1> /dev/null 2> /dev/null
+cat message.txt
 
-# Determine the starting branch
-#          Grab the branch                    | ltrim unused rows     Remove asterisk
-original=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/")
-
-# Create temporary backup branch
-tmpstr=$(date +%s)
-temporary='tmp.'$tmpstr
-
-# Copy and move ref to temporary branch
-git checkout -b $temporary 1> /dev/null 2> /dev/null || exit 1
-
-# Reset original branch to master
-git checkout -B $original $master 1> /dev/null 2> /dev/null
-
-# Pull over all files from temporary branch
-git checkout $temporary -- .
+# Pull over all files from original branch
+git checkout $original -- . 1> /dev/null 2> /dev/null
+cat message.txt
+git status
 
 # Collect the commit message of those in $original but not in $master (since..until)
-git log $master..$temporary --format=format:%s > .git/MERGE_MSG
+git log $master..$original --format=format:%s > .git/MERGE_MSG
 
 # If there is a message, commit files with input and aggregate messages
 if test -n "$message"; then

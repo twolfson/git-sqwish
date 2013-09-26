@@ -19,7 +19,7 @@ fixture_dir() {
 fixture_dir 'branch-ahead'
 
   # when sqwished with a message
-  $BIN_DIR/git-sqwish -m "Commit message 1"
+  $BIN_DIR/git-sqwish master -m "Commit message 1"
 
   exit
 

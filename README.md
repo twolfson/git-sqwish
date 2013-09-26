@@ -6,9 +6,9 @@ Designed use `git merge` during development and avoid `git rebase`'s repetitive 
 
 ```bash
 $ # On a development branch
-$ git branch -v
-* dev/add.support.page 6c5980b Indexed support page to sitemap
-  master               c2d4256 Initial commit
+$ git status
+# On branch dev/add.support.page
+nothing to commit, working directory clean
 $ # With normal and conflicting changes
 $ git log --format="%h %s"
 6c5980b Indexed support page to sitemap

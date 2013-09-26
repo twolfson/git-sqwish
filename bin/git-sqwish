@@ -51,7 +51,7 @@ git log $master..$original --format="%s" >> .git/MERGE_MSG
 # If there is a message, commit files with input and aggregate messages
 if test -n "$message"; then
   # Read in the message to memory and delete it
-  aggregate="$(cat .git/MERGE_MSG)"
+  aggregate="$(cat .git/MERGE_MSG | grep --invert-match '^# Below are your previous commit messages$')"
   rm .git/MERGE_MSG
 
   # Automatically commit with input and aggergate messages

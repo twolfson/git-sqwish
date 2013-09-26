@@ -12,7 +12,6 @@ fixture_dir() {
   TMP_DIR=$(mktemp -d)
   cp -r "$TEST_DIR"/test_files/$1/* $TMP_DIR
   cd $TMP_DIR
-  echo $TMP_DIR
   test -d dotgit && mv dotgit .git
 }
 
@@ -20,8 +19,7 @@ fixture_dir() {
 fixture_dir 'branch-ahead'
 
   # when sqwished with a message
-  # $BIN_DIR/git-sqwish master "Commit message 1" > /dev/null
-  $BIN_DIR/git-sqwish master
+  $BIN_DIR/git-sqwish master "Commit message 1" > /dev/null
 
     # is on a `.sqwished` branch
     test "$(git symbolic-ref --short HEAD)" == "dev/update.message.sqwished" || echo "\`git-sqwish\` does not move to $BRANCH.sqwished in message-ful command in message-ful command" 1>&2

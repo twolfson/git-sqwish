@@ -101,7 +101,7 @@ demo:
 	@echo '### DEMO START ###'
 	@echo '##################'
 	@echo '# On a development branch with normal and conflicting changes'
-	@echo 'git show-tree'
+	@echo 'git log --all --graph --decorate --oneline'
 	@echo '# Sync with master (as opposed to `git rebase`)'
 	@echo 'git merge master # Interchangable with `git pull`'
 	@echo 'git checkout master -- .; git add -A; git commit -m "Merged master" # TODO: DELETE ME'

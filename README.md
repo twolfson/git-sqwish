@@ -5,17 +5,13 @@ git squash for everyday use; no more merge conflicts, no more headaches.
 Designed use `git merge` during development and avoid `git rebase`'s repetitive merge conflicts altogether.
 
 ```bash
-$ # On a development branch
-$ git show-tree
-* d0609f3 (HEAD, dev/add.support.page) Indexed support page to sitemap
-| * 1be170c (master) Added home page
+$ # On a development branch with divergent changes
+$ git log --all --graph --decorate --oneline
+* 7e6437a (HEAD, dev/add.support.page) Indexed support page to sitemap
+* 1298d2c Created support page
+| * 9575519 (master) Added home page
 |/
-* a5252f0 Initial commit
-$ # With normal and conflicting changes
-$ git log --format="%h %s"
-6c5980b Indexed support page to sitemap
-373cda6 Created support page
-c2d4256 Initial commit
+* 6c4739d Initial commit
 $ # Sync with master (as opposed to `git rebase`)
 $ git merge master # Interchangable with `git pull`
 $ git mergetool -y; git commit # Deal with *one* set of merge conflicts

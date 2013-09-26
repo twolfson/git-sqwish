@@ -76,6 +76,8 @@ move-git-to-dotgit:
 
 demo:
 	# Output demo commands
+	# Capture ANSI output via:
+	# bash -l -c 'script -q -c bash $$HOME/git-sqwish-demo.txt'
 	@echo "Run the following commands:"
 	@echo '"""'
 	@echo '##################'
@@ -104,13 +106,8 @@ demo:
 	@echo 'git log --all --graph --decorate --oneline'
 	@echo '# Sync with master (as opposed to `git rebase`)'
 	@echo 'git merge master # Interchangable with `git pull`'
-	@# @echo 'echo "DELETE ME"; git checkout master -- .; git add -A; git commit -m "Merge branch '"'master'"' into dev/add.support.page"'
+	@echo 'echo "DELETE ME"; git checkout master -- .; git add -A; git commit -m "Merge branch '"'master'"' into dev/add.support.page"'
 	@echo 'git mergetool -y; git commit # Deal with *one* set of merge conflicts'
-	@echo ''
-	@echo ''
-	@echo '####################'
-	@echo '### DEMO PART II ###'
-	@echo '####################'
 	@echo '# Squash changes'
 	@echo 'git sqwish master --message "Added support page"'
 	@echo '# History is preserved on original branch, changes are sqwished to one commit'

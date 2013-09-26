@@ -19,7 +19,8 @@ fixture_dir() {
 fixture_dir 'branch-ahead'
 
   # when sqwished with a message
-  $BIN_DIR/git-sqwish master
+  $BIN_DIR/git-sqwish master "Commit message 1" > /dev/null
+  # $BIN_DIR/git-sqwish master
 
     # is on a `.sqwished` branch
     test "$(git symbolic-ref --short HEAD)" == "dev/update.message.sqwished" || echo "\`git-sqwish\` does not move to $BRANCH.sqwished in message-ful command in message-ful command" 1>&2
@@ -29,10 +30,10 @@ fixture_dir 'branch-ahead'
 
     # used the given message and previous commits in its commit
     test "$(git log -n 1 --format=%s)" == "Commit message 1" || echo "\`git-sqwish\` does not contain provided commit message in message-ful command" 1>&2
-    test "$(git log -n 1 --format=%b)" == "Updated message.txt" || echo "\`git-sqwish\` does not contain past commit messages in message-ful command" 1>&2
+    test "$(git log -n 1 --format=%b | tr '\n' '~')" == "Adjusted message.txt~Updated message.txt~~" || echo "\`git-sqwish\` does not contain past commit messages in message-ful command" 1>&2
 
     # has the changes from previous branch
-    test "$(cat message.txt)" == "Goodbye Earth" || echo "\`git-sqwish\` did not copy changes from previous branch in message-ful command" 1>&2
+    test "$(cat message.txt)" == "Goodbye Earth ;_;" || echo "\`git-sqwish\` did not copy changes from previous branch in message-ful command" 1>&2
 
   # # when sqwished without a message
   # # TODO: Fix this. https://github.com/twolfson/git-sqwish/issues/1

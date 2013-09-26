@@ -6,9 +6,11 @@ Designed use `git merge` during development and avoid `git rebase`'s repetitive 
 
 ```bash
 $ # On a development branch
-$ git status
-# On branch dev/add.support.page
-nothing to commit, working directory clean
+$ git show-tree
+* d0609f3 (HEAD, dev/add.support.page) Indexed support page to sitemap
+| * 1be170c (master) Added home page
+|/
+* a5252f0 Initial commit
 $ # With normal and conflicting changes
 $ git log --format="%h %s"
 6c5980b Indexed support page to sitemap

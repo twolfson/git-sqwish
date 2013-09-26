@@ -36,7 +36,7 @@ git checkout -B $original.sqwished $master 1> /dev/null 2> /dev/null
 git checkout $original -- . 1> /dev/null 2> /dev/null
 
 # Collect the commit message of those in $original but not in $master (since..until)
-git log $master..$original --format=format:%s > .git/MERGE_MSG
+git log $master..$original --format="%s" > .git/MERGE_MSG
 
 # If there is a message, commit files with input and aggregate messages
 if test -n "$message"; then

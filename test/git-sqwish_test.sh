@@ -12,6 +12,7 @@ fixture_dir() {
   TMP_DIR=$(mktemp -d)
   cp -r "$TEST_DIR"/test_files/$1/* $TMP_DIR
   cd $TMP_DIR
+  echo $TMP_DIR
   test -d dotgit && mv dotgit .git
 }
 
@@ -37,6 +38,7 @@ fixture_dir 'branch-ahead'
 
   # # when sqwished without a message
   # # TODO: Fix this. https://github.com/twolfson/git-sqwish/issues/1
+  # # DEV: In the interim, echo $TMP_DIR and skip "Commit message"
   # # expect $TEST_DIR/expect_tmp.sh 1> /dev/null
   # # cat message.txt
   # # git status --porcelain

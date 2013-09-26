@@ -61,16 +61,19 @@ else
 
 # Below are your previous commit messages
 # These will become the body of the commit
+
 EOF
 
   # Output each log message
   i=1
   git log $master..$original --format="%s" | \
   while read log; do
-    echo $log
-    echo $i
+    echo "# Commit #$i" >> .git/MERGE_MSG
+    echo $log >> .git/MERGE_MSG
+    echo "" >> .git/MERGE_MSG
     i=$((i+1))
   done
 
-  # git commit
+  # Open git commit dialog
+  git commit
 fi

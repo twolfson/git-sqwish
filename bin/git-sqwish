@@ -4,6 +4,7 @@
 master="$1"
 
 # If a message was provided, use it
+# TODO: Find a better solution for handling of CLI options
 # DEV: git-sqwish --message "Hi" master
 if test "$1" = "-m" || test "$1" = "--message"; then
   message="$2"

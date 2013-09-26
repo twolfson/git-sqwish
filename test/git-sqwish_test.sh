@@ -34,6 +34,13 @@ fixture_dir 'branch-ahead'
     # has the changes from previous branch
     test "$(cat message.txt)" == "Goodbye Earth ;_;" || echo "\`git-sqwish\` did not copy changes from previous branch in message-ful command" 1>&2
 
+  # when sqwished with a message as first parameter
+fixture_dir 'branch-ahead'
+  $BIN_DIR/git-sqwish --message "Commit message 2" master > /dev/null
+
+    # used the given message in its commit
+    test "$(git log -n 1 --format=%s)" == "Commit message 2" || echo "\`git-sqwish\` does not contain provided commit message in option-first message-ful command" 1>&2
+
   # # when sqwished without a message
   # # TODO: Fix this. https://github.com/twolfson/git-sqwish/issues/1
   # # DEV: In the interim, echo $TMP_DIR and skip "Commit message"

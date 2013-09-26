@@ -3,12 +3,15 @@
 # Rename variables
 master="$1"
 
-while getopts "m:" opt; do
-  case $opt in
-    m)
-     echo "message" $OPTARG
-  esac
-done
+# If a message was provided, use it
+echo 'a'
+if ("$1" == "-m" || "$1" == "--message"); then
+  echo "$2"
+echo 'b'
+elif ("$2" == "-m" || "$2" == "--message"); then
+  echo "$3"
+echo 'c'
+fi
 
 # If no master branch is provided, complain and leave
 if test -z $master; then

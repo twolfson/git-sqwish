@@ -73,6 +73,14 @@ $ git sqwish # Now available for invocation
 6. If `message` was not provided, open `commit` prompt with collective message
 7. Commit changes to `.squashed` branch
 
+## FAQs
+### Can we squash changes without moving to a new branch?
+A secondary branch is always required for this approach. However, [git-extras][] implements a `git-squash` that returns to the original branch.
+
+```bash
+git squash --me
+```
+
 ## Attribution
 `man/Readme.md`, `man/manning-up.sh`, and `Makefile` are forked from [git-extras][], a broader collection of `git` utilities. Those files are [licensed under the MIT License][git-extras-license].
 

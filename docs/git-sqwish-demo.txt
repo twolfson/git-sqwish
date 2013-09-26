@@ -1,4 +1,4 @@
-Script started on Thu 26 Sep 2013 01:17:39 AM PDT
+Script started on Thu 26 Sep 2013 01:21:12 AM PDT
 cd "$(mktemp -d)"
 PS1="$ "
 git init
@@ -18,26 +18,28 @@ git commit -m "Indexed support page to sitemap"
 ##################
 ### DEMO START ###
 ##################
-\033[3;# On a development branch with normal and conflicting changes\033[0;
+# On a development branch with normal and conflicting changes
 git log --all --graph --decorate --oneline
-\033[3;# Sync with master (as opposed to `git rebase`)\033[0;
-git merge master \033[3;# Interchangable with `git pull\033[0;`
+# Sync with master (as opposed to `git rebase`)
+git merge master # Interchangable with `git pull`
 echo "DELETE ME"; git checkout master -- .; git add -A; git commit -m "Merge branch 'master' into dev/add.support.page"
-git mergetool -y; git commit \033[3;# Deal with *one* set of merge conflicts\033[0;
-\033[3;# Squash changes\033[0;
+git mergetool -y; git commit # Deal with *one* set of merge conflicts
+# Squash changes
 git sqwish master --message "Added support page"
-\033[3;# History is preserved on original branch, changes are sqwished to one commit\033[0;
+# History is preserved on original branch, changes are sqwished to one commit
 git log --all --graph --decorate --oneline --simplify-by-decoration -n 3
 exit
-(B[m[1m[38;5;27mtodd [37mat [38;5;39mEuclid [37min [38;5;76m~/github/git-sqwish[37m on [38;5;154mdev/adjust.readme*[37m
+(B[m[1m[38;5;27mtodd [37mat [38;5;39mEuclid [37min [38;5;76m~/github/git-sqwish[37m on [38;5;154mdev/adjust.readme▲[37m
+
 $ (B[mcd "$(mktemp -d)"
-[1m[38;5;27mtodd [37mat [38;5;39mEuclid [37min [38;5;76m/tmp/tmp.c7RmhhWVbc[37m
+[1m[38;5;27mtodd [37mat [38;5;39mEuclid [37min [38;5;76m/tmp/tmp.I3QtzaowU9[37m
+
 $ (B[mPS1="$ "
 $ git init
-Initialized empty Git repository in /tmp/tmp.c7RmhhWVbc/.git/
+Initialized empty Git repository in /tmp/tmp.I3QtzaowU9/.git/
 $ echo "<?xml>" > sitemap.xml; git add sitemap.xml
 $ git commit -m "Initial commit"
-[master (root-commit) 302cec9] Initial commit
+[master (root-commit) 905c317] Initial commit
  1 file changed, 1 insertion(+)
  create mode 100644 sitemap.xml
 $ git checkout -b dev/add.support.page
@@ -46,55 +48,58 @@ $ git checkout master
 Switched to branch 'master'
 $ echo "<xml>index.html</xml>" >> sitemap.xml; git add sitemap.xml
 $ git commit -m "Added home page"
-[master da9046a] Added home page
+[master be26abc] Added home page
  1 file changed, 1 insertion(+)
 $ git checkout -
 Switched to branch 'dev/add.support.page'
 $ # Make normal changes
 $ echo "<p>Email us</p>" > support.html; git add support.html
 $ git commit -m "Created support page"
-[dev/add.support.page ff42188] Created support page
+[dev/add.support.page 88bb9bc] Created support page
  1 file changed, 1 insertion(+)
  create mode 100644 support.html
 $ # Introduce conflictable code
 $ echo "<xml>support.html</xml>" >> sitemap.xml; git add sitemap.xml
 $ git commit -m "Indexed support page to sitemap"
-[dev/add.support.page 86b487b] Indexed support page to sitemap
+[dev/add.support.page c04ccbd] Indexed support page to sitemap
  1 file changed, 1 insertion(+)
 $ ##################
 $ ### DEMO START ###
 $ ##################
-$ \033[3;# On a development branch with normal and conflicting changes\033[0;
-033[3: command not found
+$ [2m# On a development branch with normal and conflicting changes[0m
 $ git log --all --graph --decorate --oneline
-[?1h=* [33m86b487b[m[33m ([1;36mHEAD[m[33m, [1;32mdev/add.support.page[m[33m)[m Indexed support page to sitemap[m
-* [33mff42188[m Created support page[m
-[31m|[m * [33mda9046a[m[33m ([1;32mmaster[m[33m)[m Added home page[m
+[?1h=
+* [33mc04ccbd[m[33m ([1;36mHEAD[m[33m, [1;32mdev/add.support.page[m[33m)[m Indexed support page to sitemap[m
+* [33m88bb9bc[m Created support page[m
+[31m|[m * [33mbe26abc[m[33m ([1;32mmaster[m[33m)[m Added home page[m
 [31m|[m[31m/[m  [m
-* [33m302cec9[m Initial commit[m
-[K[?1l>$ \033[3;# Sync with master (as opposed to `git rebase`)\033[0;
-033[3: command not found
-$ git merge master \033[3;# Interchangable with `git pull\033[0;`
-merge: 033[3 - not something we can merge
-$ echo "DELETE ME"; git checkout master -- .; git add -A; git commit -m "Merge branch 'mast er' into dev/add.support.page"
+* [33m905c317[m Initial commit[m
+
+[K[?1l>$ # Sync with master (as opposed to `git rebase`)
+$ git merge master # Interchangable with `git pull`
+Auto-merging sitemap.xml
+CONFLICT (content): Merge conflict in sitemap.xml
+Automatic merge failed; fix conflicts and then commit the result.
+$ echo "DELETE ME"; git checkout master -- .; git add -A; git commit -m "Merge branch 'mast
+er' into dev/add.support.page"
 DELETE ME
-[dev/add.support.page 722808b] Merge branch 'master' into dev/add.support.page
- 1 file changed, 1 insertion(+), 1 deletion(-)
-$ git mergetool -y; git commit \033[3;# Deal with *one* set of merge conflicts\033[0;
+[dev/add.support.page 190df54] Merge branch 'master' into dev/add.support.page
+$ git mergetool -y; git commit # Deal with *one* set of merge conflicts
 No files need merging
-error: pathspec '033[3' did not match any file(s) known to git.
-$ \033[3;# Squash changes\033[0;
-033[3: command not found
+# On branch dev/add.support.page
+nothing to commit, working directory clean
+$ # Squash changes
 $ git sqwish master --message "Added support page"
-[dev/add.support.page.sqwished 20c197a] Added support page
+[dev/add.support.page.sqwished e041034] Added support page
  1 file changed, 1 insertion(+)
  create mode 100644 support.html
-$ \033[3;# History is preserved on original branch, changes are sqwished to one commit\033[ 0;
-033[3: command not found
+$ # History is preserved on original branch, changes are sqwished to one commit
 $ git log --all --graph --decorate --oneline --simplify-by-decoration -n 3
-[?1h=* [33m722808b[m[33m ([1;32mdev/add.support.page[m[33m)[m Merge branch 'master' into dev/add.support.page[m
-[31m|[m * [33m20c197a[m[33m ([1;36mHEAD[m[33m, [1;32mdev/add.support.page.sqwished[m[33m)[m Added support page[m
-[31m|[m * [33mda9046a[m[33m ([1;32mmaster[m[33m)[m Added home page[m
+[?1h=
+* [33m190df54[m[33m ([1;32mdev/add.support.page[m[33m)[m Merge branch 'master' into dev/add.support.page[m
+[31m|[m * [33me041034[m[33m ([1;36mHEAD[m[33m, [1;32mdev/add.support.page.sqwished[m[33m)[m Added support page[m
 [31m|[m[31m/[m  [m
-[K[?1l>$ exit
+* [33mbe26abc[m[33m ([1;32mmaster[m[33m)[m Added home page[m
+
+[K[?1l>$ exit
 exit

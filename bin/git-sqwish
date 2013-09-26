@@ -5,7 +5,10 @@ master="$1"
 message="$2"
 
 # If no master branch is provided, complain and leave
-test -z $master && echo "Master branch required." 1>&2 && exit 1
+if test -z $master; then
+  echo "Master branch required." 1>&2
+  exit 1
+fi
 
 # Determine the starting branch
 original="$(git symbolic-ref --short HEAD)"
@@ -14,7 +17,10 @@ original="$(git symbolic-ref --short HEAD)"
 clean_status() {
   git status --porcelain
 }
-test -n "$(clean_status)" && echo "Working directory is dirty. Please stash or commit changes." 1>&2 && exit 1
+if test -n "$(clean_status)"; then
+  echo "Working directory is dirty. Please stash or commit changes." 1>&2
+  exit 1
+fi
 
 # Pull down changes from master
 git merge $master --no-commit --no-ff 1> /dev/null 2> /dev/null

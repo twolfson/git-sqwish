@@ -76,13 +76,12 @@ move-git-to-dotgit:
 
 demo:
 	# Output demo commands
-	# Capture ANSI output via:
-	# bash -l -c 'script -q -c bash $$HOME/git-sqwish-demo.txt'
 	@echo "Run the following commands:"
 	@echo '"""'
 	@echo '##################'
 	@echo '### DEMO SETUP ###'
 	@echo '##################'
+	@echo 'bash -l -c "script -q -c bash git-sqwish-demo.txt"'
 	@echo 'cd "$$(mktemp -d)"'
 	@echo 'PS1="$$ "'
 	@echo 'git init'
@@ -112,6 +111,7 @@ demo:
 	@echo 'git sqwish master --message "Added support page"'
 	@echo '# History is preserved on original branch, changes are sqwished to one commit'
 	@echo 'git log --all --graph --decorate --oneline --simplify-by-decoration -n 3'
+	@echo 'exit'
 	@echo '"""'
 
 .PHONY: docs clean docclean install uninstall

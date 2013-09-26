@@ -68,38 +68,23 @@ $ ### DEMO START ###
 $ ##################
 $ [2m# On a development branch with normal and conflicting changes[0m
 $ git log --all --graph --decorate --oneline
-[?1h=
 * [33mc04ccbd[m[33m ([1;36mHEAD[m[33m, [1;32mdev/add.support.page[m[33m)[m Indexed support page to sitemap[m
 * [33m88bb9bc[m Created support page[m
 [31m|[m * [33mbe26abc[m[33m ([1;32mmaster[m[33m)[m Added home page[m
 [31m|[m[31m/[m  [m
 * [33m905c317[m Initial commit[m
-
 [K[?1l>$ [2m# Sync with master (as opposed to `git rebase`)[0m
 $ git merge master [2m# Interchangable with `git pull`[0m
-Auto-merging sitemap.xml
-CONFLICT (content): Merge conflict in sitemap.xml
-Automatic merge failed; fix conflicts and then commit the result.
-$ echo "DELETE ME"; git checkout master -- .; git add -A; git commit -m "Merge branch 'mast
-er' into dev/add.support.page"
-DELETE ME
-[dev/add.support.page 190df54] Merge branch 'master' into dev/add.support.page
 $ git mergetool -y; git commit [2m# Deal with *one* set of merge [0mconflicts
-No files need merging
-# On branch dev/add.support.page
-nothing to commit, working directory clean
+[dev/add.support.page 190df54] Merge branch 'master' into dev/add.support.page
 $ [2m# Squash changes[0m
 $ git sqwish master --message "Added support page"
 [dev/add.support.page.sqwished e041034] Added support page
- 1 file changed, 1 insertion(+)
- create mode 100644 support.html
 $ [2m# History is preserved on original branch, changes are sqwished to [0mone commit
 $ git log --all --graph --decorate --oneline --simplify-by-decoration -n 3
-[?1h=
 * [33m190df54[m[33m ([1;32mdev/add.support.page[m[33m)[m Merge branch 'master' into dev/add.support.page[m
 [31m|[m * [33me041034[m[33m ([1;36mHEAD[m[33m, [1;32mdev/add.support.page.sqwished[m[33m)[m Added support page[m
 [31m|[m[31m/[m  [m
 * [33mbe26abc[m[33m ([1;32mmaster[m[33m)[m Added home page[m
-
 [K[?1l>$ exit
 exit

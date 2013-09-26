@@ -61,7 +61,8 @@ else
 # Below are your previous commit messages
 # These will become the body of the commit
 EOF
-  for log in "$(git log $master..$original --format="%s")"; do
+  git log $master..$original --format="%s" | \
+  while read log; do
     echo $log
   done
 

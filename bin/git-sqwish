@@ -17,7 +17,7 @@ clean_status() {
 test -n "$(clean_status)" && echo "Working directory is dirty. Please stash or commit changes." 1>&2 && exit 1
 
 # Pull down changes from master
-git merge --no-commit --no-ff $master 1> /dev/null 2> /dev/null
+git merge $master --no-commit --no-ff 1> /dev/null 2> /dev/null
 
 # If the branch is dirty
 if test -n "$(clean_status)"; then
@@ -30,19 +30,10 @@ if test -n "$(clean_status)"; then
 fi
 
 # Move to a squashed branch based off of master
-cat message.txt
 git checkout -B $original.squashed $master 1> /dev/null 2> /dev/null
-git log --format=oneline
-cat message.txt
 
 # Pull over all files from original branch
-git merge $original --no-commit --no-ff 1> /dev/null 2> /dev/null
-cat message.txt
-echo $original
-git log --format=oneline
-git reset .
-git merge --abort
-git status
+git checkout $original -- . 1> /dev/null 2> /dev/null
 
 # Collect the commit message of those in $original but not in $master (since..until)
 git log $master..$original --format=format:%s > .git/MERGE_MSG

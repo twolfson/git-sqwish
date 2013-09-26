@@ -1,14 +1,24 @@
-#!/bin/sh
+#!/bin/bash
 
 # Rename variables
 master="$1"
-message="$2"
+
+echo 'hi'
+while getopts ":m" opt; do
+  echo $opt
+  case $opt in
+    m)
+     echo "message" $OPTARG
+  esac
+done
 
 # If no master branch is provided, complain and leave
 if test -z $master; then
   echo "Master branch required." 1>&2
   exit 1
 fi
+
+exit 0
 
 # Determine the starting branch
 original="$(git symbolic-ref --short HEAD)"

@@ -19,7 +19,9 @@ fixture_dir() {
 fixture_dir 'branch-ahead'
 
   # when sqwished with a message
-  $BIN_DIR/git-sqwish master -m "Commit message 1" > /dev/null
+  $BIN_DIR/git-sqwish -m "Commit message 1"
+
+  exit
 
     # is on a `.sqwished` branch
     test "$(git symbolic-ref --short HEAD)" == "dev/update.message.sqwished" || echo "\`git-sqwish\` does not move to $BRANCH.sqwished in message-ful command in message-ful command" 1>&2

@@ -54,6 +54,7 @@ $past_commits
 EOF
 else
 # Otherwise, open a pre-filled commit dialog (via .git/MERGE_MSG)
+  # Add informative text
   cat <<EOF > .git/MERGE_MSG
 # Please write a subject for your commit
 # If you don't, the subject will become the first log below
@@ -61,9 +62,14 @@ else
 # Below are your previous commit messages
 # These will become the body of the commit
 EOF
+
+  # Output each log message
+  i=1
   git log $master..$original --format="%s" | \
   while read log; do
     echo $log
+    echo $i
+    i=$((i+1))
   done
 
   # git commit

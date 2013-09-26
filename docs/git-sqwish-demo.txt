@@ -1,0 +1,69 @@
+Script started on Thu 26 Sep 2013 12:54:58 AM PDT
+(B[m[1m[38;5;27mtodd [37mat [38;5;39mEuclid [37min [38;5;76m~/github/git-sqwish[37m on [38;5;154mdev/adjust.readme*[37m
+
+$ (B[m##################
+[1m[38;5;27mtodd [37mat [38;5;39mEuclid [37min [38;5;76m~/github/git-sqwish[37m on [38;5;154mdev/adjust.readme*[37m
+
+$ (B[m### DEMO SETUP ###
+[1m[38;5;27mtodd [37mat [38;5;39mEuclid [37min [38;5;76m~/github/git-sqwish[37m on [38;5;154mdev/adjust.readme*[37m
+
+$ (B[m##################
+[1m[38;5;27mtodd [37mat [38;5;39mEuclid [37min [38;5;76m~/github/git-sqwish[37m on [38;5;154mdev/adjust.readme*[37m
+
+$ (B[mcd "$(mktemp -d)"
+[1m[38;5;27mtodd [37mat [38;5;39mEuclid [37min [38;5;76m/tmp/tmp.CDrfn76cIM[37m
+
+$ (B[mPS1="$ "
+$ git init
+Initialized empty Git repository in /tmp/tmp.CDrfn76cIM/.git/
+$ echo "<?xml>" > sitemap.xml; git add sitemap.xml
+$ git commit -m "Initial commit"
+[master (root-commit) 298d9bc] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 sitemap.xml
+$ git checkout -b dev/add.support.page
+Switched to a new branch 'dev/add.support.page'
+$ git checkout master
+Switched to branch 'master'
+$ echo "<xml>index.html</xml>" >> sitemap.xml; git add sitemap.xml
+$ git commit -m "Added home page"
+[master 0986566] Added home page
+ 1 file changed, 1 insertion(+)
+$ git checkout -
+Switched to branch 'dev/add.support.page'
+$ # Make normal changes
+$ echo "<p>Email us</p>" > support.html; git add support.html
+$ git commit -m "Created support page"
+[dev/add.support.page de8b067] Created support page
+ 1 file changed, 1 insertion(+)
+ create mode 100644 support.html
+$ # Introduce conflictable code
+$ echo "<xml>support.html</xml>" >> sitemap.xml; git add sitemap.xml
+$ git commit -m "Indexed support page to sitemap"
+[dev/add.support.page 82af776] Indexed support page to sitemap
+ 1 file changed, 1 insertion(+)
+$ ##################
+$ ### DEMO START ###
+$ ##################
+$ # On a development branch with normal and conflicting changes
+$ git log --all --graph --decorate --oneline
+* [33m82af776[m[33m ([1;36mHEAD[m[33m, [1;32mdev/add.support.page[m[33m)[m Indexed support page to sitemap[m
+* [33mde8b067[m Created support page[m
+[31m|[m * [33m0986566[m[33m ([1;32mmaster[m[33m)[m Added home page[m
+[31m|[m[31m/[m  [m
+* [33m298d9bc[m Initial commit[m
+[K[?1l>$ # Sync with master (as opposed to `git rebase`)
+$ git merge master # Interchangable with `git pull`
+$ git mergetool -y; git commit # Deal with *one* set of merge conflicts
+[dev/add.support.page 0263d6d] Merge branch 'master' into dev/add.support.page
+$ # Squash changes
+$ git sqwish master --message "Added support page"
+[dev/add.support.page.sqwished 8a002c8] Added support page
+$ # History is preserved on original branch, changes are sqwished to one commit
+$ git log --all --graph --decorate --oneline --simplify-by-decoration -n 3
+* [33m0263d6d[m[33m ([1;32mdev/add.support.page[m[33m)[m Merge branch 'master' into dev/add.support.page[m
+[31m|[m * [33m8a002c8[m[33m ([1;36mHEAD[m[33m, [1;32mdev/add.support.page.sqwished[m[33m)[m Added support page[m
+[31m|[m[31m/[m  [m
+* [33m0986566[m[33m ([1;32mmaster[m[33m)[m Added home page[m
+[K[?1l>$ exit
+exit

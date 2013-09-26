@@ -81,7 +81,7 @@ demo:
 	@echo '##################'
 	@echo '### DEMO SETUP ###'
 	@echo '##################'
-	@echo 'bash -l -c "script -q -c bash git-sqwish-demo.txt"'
+	@echo 'bash -l -c "script -q -c bash docs/git-sqwish-demo.txt"'
 	@echo 'cd "$$(mktemp -d)"'
 	@echo 'PS1="$$ "'
 	@echo 'git init'

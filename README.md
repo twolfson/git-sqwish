@@ -6,10 +6,8 @@ Designed use `git merge` during development and avoid `git rebase`'s repetitive 
 
 ```bash
 $ # On a development branch
-$ git branch
-* dev/add.support.page
-  master
-
+$ git rev-parse HEAD
+dev/add.support.page
 $ # With normal and conflicting changes
 $ git log --format=oneline
 503e1edc1e4cef17e0f7dbaad342d440d6240144 Indexed support page to sitemap
@@ -28,10 +26,9 @@ $ # History is preserved on original branch
 $ git branch
   dev/add.support.page
 * dev/add.support.page.sqwished
-  master
 $ # Changes are sqwished to one commit
 $ git log --format=oneline
-0d329440700e73e6edd6409da515b4a47e920ef3 Added support page Merge branch 'master' into dev/add.support.page Indexed support page to sitemap Created support page
+0d329440700e73e6edd6409da515b4a47e920ef3 Added support page
 f0b6fecf1cfea4ca3b1af3fe2cd35fee14ac967b Added home page
 ```
 

@@ -5,28 +5,30 @@ git squash for everyday use; no more merge conflicts, no more headaches.
 Designed use `git merge` during development and avoid `git rebase`'s repetitive merge conflicts altogether.
 
 ```bash
-$ # On a development branch with divergent changes
+$ # On a development branch with normal and conflicting changes
 $ git log --all --graph --decorate --oneline
-* 7e6437a (HEAD, dev/add.support.page) Indexed support page to sitemap
-* 1298d2c Created support page
-| * 9575519 (master) Added home page
+* d0c27c7 (HEAD, dev/add.support.page) Indexed support page to sitemap
+* 2c4f7c7 Created support page
+| * fdb694e (master) Added home page
 |/
-* 6c4739d Initial commit
+* 5de212d Initial commit
 $ # Sync with master (as opposed to `git rebase`)
 $ git merge master # Interchangable with `git pull`
 $ git mergetool -y; git commit # Deal with *one* set of merge conflicts
 $ # Squash changes
 $ git sqwish master --message "Added support page"
-[dev/add.support.page.sqwished 5e317a0] Added support page
-$ # History is preserved on original branch
-$ git branch -v
-  dev/add.support.page          6c5980b Indexed support page to sitemap
-* dev/add.support.page.sqwished 5e317a0 Added support page
-  master                        c2d4256 Initial commit
-$ # Changes are sqwished to one commit
-$ git log --format="%h %s"
-5e317a0 Added support page
-c2d4256 Initial commit
+[dev/add.support.page.sqwished eeadb64] Added support page
+$ # History is preserved on original branch, changes are sqwished to one commit
+$ git log --all --graph --decorate --oneline
+*   1e09e5f (dev/add.support.page) Merged master
+|\
+* | d0c27c7 Indexed support page to sitemap
+* | 2c4f7c7 Created support page
+| | * eeadb64 (HEAD, dev/add.support.page.sqwished) Added support page
+| |/
+| * fdb694e (master) Added home page
+|/
+* 5de212d Initial commit
 ```
 
 ## Installation

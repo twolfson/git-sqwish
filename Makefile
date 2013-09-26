@@ -104,14 +104,12 @@ demo:
 	@echo 'git log --all --graph --decorate --oneline'
 	@echo '# Sync with master (as opposed to `git rebase`)'
 	@echo 'git merge master # Interchangable with `git pull`'
-	@echo 'git checkout master -- .; git add -A; git commit -m "Merged master" # TODO: DELETE ME'
+	@echo 'echo "DELETE ME"; git checkout master -- .; git add -A; git commit -m "Merged master"'
 	@echo '#git mergetool -y; git commit # Deal with *one* set of merge conflicts'
 	@echo '# Squash changes'
 	@echo 'git sqwish master --message "Added support page"'
-	@echo '# History is preserved on original branch'
-	@echo 'git branch -v'
-	@echo '# Changes are sqwished to one commit'
-	@echo 'git log --format="%h %s"'
+	@echo '# History is preserved on original branch, changes are sqwished to one commit'
+	@echo 'git log --all --graph --decorate --oneline'
 	@echo '"""'
 
 .PHONY: docs clean docclean install uninstall

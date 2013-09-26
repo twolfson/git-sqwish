@@ -8,7 +8,7 @@ message="$2"
 test -z $master && echo "Master branch required." 1>&2 && exit 1
 
 # Determine the starting branch
-original=$(git symbolic-ref --short HEAD)
+original="$(git symbolic-ref --short HEAD)"
 
 # If the working directory is dirty, complain and leave
 clean_status() {
@@ -41,7 +41,7 @@ git log $master..$original --format=format:%s > .git/MERGE_MSG
 # If there is a message, commit files with input and aggregate messages
 if test -n "$message"; then
   # Read in the message to memory and delete it
-  aggregate=$(cat .git/MERGE_MSG)
+  aggregate="$(cat .git/MERGE_MSG)"
   rm .git/MERGE_MSG
 
   # Automatically commit with input and aggergate messages

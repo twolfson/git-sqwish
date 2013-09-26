@@ -1,13 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
 # Rename variables
 master="$1"
 
 echo 'hi'
-while getopts ":m:" opt; do
+while getopts ":m:message:" opt; do
   echo $opt
   case $opt in
     m)
+    message)
      echo "message" $OPTARG
   esac
 done

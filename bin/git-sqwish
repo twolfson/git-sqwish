@@ -55,10 +55,15 @@ EOF
 else
 # Otherwise, open a pre-filled commit dialog (via .git/MERGE_MSG)
   cat <<EOF > .git/MERGE_MSG
+# Please write a subject for your commit
+# If you don't, the subject will become the first log below
 
 # Below are your previous commit messages
+# These will become the body of the commit
 EOF
-  git log $master..$original --format="%s" >> .git/MERGE_MSG
+  for log in "$(git log $master..$original --format="%s")"; do
+    echo $log
+  done
 
-  git commit
+  # git commit
 fi

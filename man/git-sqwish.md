@@ -7,7 +7,7 @@ git-sqwish(1) -- Squash changes in a branch
 
 ## DESCRIPTION
 
-  Take all commits in a branch, compress them into _one_ commit on top of the `master-branch`, apply to `$CURRENT_BRANCH.squashed` branch.
+  Take all commits in a branch, compress them into _one_ commit on top of the `master-branch`, apply to `$CURRENT_BRANCH.sqwished` branch.
 
 ## OPTIONS
 
@@ -17,12 +17,12 @@ git-sqwish(1) -- Squash changes in a branch
 
   &lt;commit-message&gt;
 
-  If commit-message is given, commit will be executed automatically and message will be prepended to the default summary (all commit summaries of squashed commits).
+  If commit-message is given, commit will be executed automatically and message will be prepended to the default summary (all commit summaries of sqwished commits).
 
 ## EXAMPLES
 
     $ git sqwish master
-    [dev/my.feature.squashed 97b70be] Added abc. Added def.
+    [dev/my.feature.sqwished 97b70be] Added abc. Added def.
      0 files changed
      create mode 100644 abc
      create mode 100644 def

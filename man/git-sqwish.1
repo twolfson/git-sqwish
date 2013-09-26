@@ -10,7 +10,7 @@
 \fBgit\-sqwish\fR <master\-branch> [<commit\-message>]
 .
 .SH "DESCRIPTION"
-Take all commits in a branch, compress them into \fIone\fR commit on top of the \fBmaster\-branch\fR, apply to \fB$CURRENT_BRANCH\.squashed\fR branch\.
+Take all commits in a branch, compress them into \fIone\fR commit on top of the \fBmaster\-branch\fR, apply to \fB$CURRENT_BRANCH\.sqwished\fR branch\.
 .
 .SH "OPTIONS"
 <master\-branch>
@@ -22,14 +22,14 @@ Branch to squash commits on top of\.
 <commit\-message>
 .
 .P
-If commit\-message is given, commit will be executed automatically and message will be prepended to the default summary (all commit summaries of squashed commits)\.
+If commit\-message is given, commit will be executed automatically and message will be prepended to the default summary (all commit summaries of sqwished commits)\.
 .
 .SH "EXAMPLES"
 .
 .nf
 
 $ git sqwish master
-[dev/my\.feature\.squashed 97b70be] Added abc\. Added def\.
+[dev/my\.feature\.sqwished 97b70be] Added abc\. Added def\.
  0 files changed
  create mode 100644 abc
  create mode 100644 def

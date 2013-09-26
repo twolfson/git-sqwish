@@ -21,12 +21,12 @@ fixture_dir 'branch-ahead'
   # when sqwished with a message
   $BIN_DIR/git-sqwish master "Commit message 1" > /dev/null
 
-    # is on a `.squashed` branch
+    # is on a `.sqwished` branch
     # TODO: Renamed to .sqwished
-    test "$(git symbolic-ref --short HEAD)" == "dev/update.message.squashed" || echo "\`git-sqwish\` does not move to $BRANCH.squashed in message-ful command in message-ful command" 1>&2
+    test "$(git symbolic-ref --short HEAD)" == "dev/update.message.sqwished" || echo "\`git-sqwish\` does not move to $BRANCH.sqwished in message-ful command in message-ful command" 1>&2
 
-    # is squashed (one commit ahead of `master)
-    test "$(git log master..dev/update.message.squashed --format=oneline | wc -l)" == "1" || echo "\`git-sqwish\` did not squash commits to one commit in message-ful command" 1>&2
+    # is sqwished (one commit ahead of `master)
+    test "$(git log master..dev/update.message.sqwished --format=oneline | wc -l)" == "1" || echo "\`git-sqwish\` did not squash commits to one commit in message-ful command" 1>&2
 
     # used the given message and previous commits in its commit
     test "$(git log -n 1 --format=%s)" == "Commit message 1 Updated message.txt" || echo "\`git-sqwish\` does not contain provided or past commit messages in message-ful command" 1>&2

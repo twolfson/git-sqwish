@@ -110,7 +110,7 @@ demo:
 	@echo 'git sqwish master "Added support page"'
 	@echo '# History is preserved on original branch'
 	@echo 'git branch'
-	@echo '# Changes are squashed to one commit'
+	@echo '# Changes are sqwished to one commit'
 	@echo 'git log --format=oneline'
 	@echo '"""'
 

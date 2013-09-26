@@ -22,14 +22,14 @@ $ git mergetool -y; git commit # Deal with *one* set of merge conflicts
 
 $ # Squash changes
 $ git sqwish master "Added support page"
-[dev/add.support.page.squashed 0d32944] Added support page Merge branch 'master' into dev/add.support.page Indexed support page to sitemap Created support page
+[dev/add.support.page.sqwished 0d32944] Added support page Merge branch 'master' into dev/add.support.page Indexed support page to sitemap Created support page
 
 $ # History is preserved on original branch
 $ git branch
   dev/add.support.page
-* dev/add.support.page.squashed
+* dev/add.support.page.sqwished
   master
-$ # Changes are squashed to one commit
+$ # Changes are sqwished to one commit
 $ git log --format=oneline
 0d329440700e73e6edd6409da515b4a47e920ef3 Added support page Merge branch 'master' into dev/add.support.page Indexed support page to sitemap Created support page
 f0b6fecf1cfea4ca3b1af3fe2cd35fee14ac967b Added home page
@@ -67,11 +67,11 @@ $ git sqwish # Now available for invocation
 
 1. Verify current branch is clean
 2. Verify current branch is ahead of `master` and won't conflict with a dry merge
-3. Checkout `.squashed` branch based off of `master`
-4. Copy state of files from original branch to `.squashed` branch
+3. Checkout `.sqwished` branch based off of `master`
+4. Copy state of files from original branch to `.sqwished` branch
 5. Collect commit messages from original branch into collective commit message
 6. If `message` was not provided, open `commit` prompt with collective message
-7. Commit changes to `.squashed` branch
+7. Commit changes to `.sqwished` branch
 
 ## FAQs
 ### Can we squash changes without moving to a new branch?

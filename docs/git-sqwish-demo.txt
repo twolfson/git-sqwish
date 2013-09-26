@@ -16,14 +16,14 @@ git commit -m "Created support page"
 echo "<xml>support.html</xml>" >> sitemap.xml; git add sitemap.xml
 git commit -m "Indexed support page to sitemap"
 ##################
-### DEMO START [2m###[0m
+### DEMO START [2m###
 ##################
 # On a development branch with normal and conflicting changes
 git log --all --graph --decorate --oneline
 # Sync with master (as opposed to `git rebase`)
-git merge master [2m# Interchangable with `git pull`[0m
+git merge master [2m# Interchangable with `git pull`
 echo "DELETE ME"; git checkout master -- .; git add -A; git commit -m "Merge branch 'master' into dev/add.support.page"
-git mergetool -y; git commit [2m# Deal with *one* set of merge conflicts[0m
+git mergetool -y; git commit [2m# Deal with *one* set of merge conflicts
 # Squash changes
 git sqwish master --message "Added support page"
 # History is preserved on original branch, changes are sqwished to one commit
@@ -73,18 +73,18 @@ $ ##################
 [31m|[m * [33mbe26abc[m[33m ([1;32mmaster[m[33m)[m Added home page[m
 [31m|[m[31m/[m  [m
 * [33m905c317[m Initial commit[m
-[K[?1l>[1m$[0m [2m# Sync with master (as opposed to `git rebase`)[0m
+[1m$[0m [2m# Sync with master (as opposed to `git rebase`)[0m
 [1m$[0m git merge master [2m# Interchangable with `git pull`[0m
-[1m$[0m git mergetool -y; git commit [2m# Deal with *one* set of merge [0mconflicts
+[1m$[0m git mergetool -y; git commit [2m# Deal with *one* set of merge conflicts[0m
 [dev/add.support.page 190df54] Merge branch 'master' into dev/add.support.page
 [1m$[0m [2m# Squash changes[0m
 [1m$[0m git sqwish master --message "Added support page"
 [dev/add.support.page.sqwished e041034] Added support page
-[1m$[0m [2m# History is preserved on original branch, changes are sqwished to [0mone commit
+[1m$[0m [2m# History is preserved on original branch, changes are sqwished to one commit[0m
 [1m$[0m git log --all --graph --decorate --oneline --simplify-by-decoration -n 3
 * [33m190df54[m[33m ([1;32mdev/add.support.page[m[33m)[m Merge branch 'master' into dev/add.support.page[m
 [31m|[m * [33me041034[m[33m ([1;36mHEAD[m[33m, [1;32mdev/add.support.page.sqwished[m[33m)[m Added support page[m
 [31m|[m[31m/[m  [m
 * [33mbe26abc[m[33m ([1;32mmaster[m[33m)[m Added home page[m
-[K[?1l>[1m$[0m exit
+[1m$[0m exit
 exit

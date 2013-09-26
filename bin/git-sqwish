@@ -53,6 +53,3 @@ else
 # Otherwise, open a pre-filled commit dialog (via .git/MERGE_MSG)
   git commit
 fi
-
-# Delete backup branch
-git branch -D $temporary 1> /dev/null 2> /dev/null

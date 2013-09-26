@@ -22,7 +22,6 @@ fixture_dir 'branch-ahead'
   $BIN_DIR/git-sqwish master "Commit message 1" > /dev/null
 
     # is on a `.sqwished` branch
-    # TODO: Renamed to .sqwished
     test "$(git symbolic-ref --short HEAD)" == "dev/update.message.sqwished" || echo "\`git-sqwish\` does not move to $BRANCH.sqwished in message-ful command in message-ful command" 1>&2
 
     # is sqwished (one commit ahead of `master)

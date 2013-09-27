@@ -69,6 +69,19 @@ fixture_dir 'branch-ahead'
     # is on the original branch
     test "$(git symbolic-ref --short HEAD)" == "dev/update.message" || echo "\`git-sqwish\` moved off of original branch in master-less command" 1>&2
 
+  # TODO: Test sqwished against non-existant branch
+  # sqwished against a non-existant branch
+  OUTPUT="$($BIN_DIR/git-sqwish maaaster 2>&1)"
+
+    # exits with a non-zero code
+    test "$?" != 0 || echo "$? == 0 for master-less command" 1>&2
+
+    # informs user about missing parameter
+    test "$OUTPUT" == "Master branch required." || echo "\`git sqwish\` did not inform user of missing parameter for master-less command" 1>&2
+
+    # is on the original branch
+    test "$(git symbolic-ref --short HEAD)" == "dev/update.message" || echo "\`git-sqwish\` moved off of original branch in master-less command" 1>&2
+
 # A dirty branch
 fixture_dir 'branch-dirty'
 

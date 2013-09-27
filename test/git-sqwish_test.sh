@@ -130,8 +130,10 @@ fixture_dir 'bad-commit-hook'
   fixture_dir 'rollback-fresh'
 
     # does not have a sqwished branch
+    ! git checkout dev/update.message.sqwished 1> /dev/null 2> /dev/null || echo "\`git-sqwish\` created .sqwished branch for repo without it" 1>&2
 
   # with a second timing sqwish
   fixture_dir 'rollback-existing'
 
     # keeps the sqwished branch
+    git checkout dev/update.message.sqwished 1> /dev/null 2> /dev/null || echo "\`git-sqwish\` deleted .sqwished branch for repo with it" 1>&2

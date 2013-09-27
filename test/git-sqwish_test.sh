@@ -98,3 +98,19 @@ fixture_dir 'branch-divergent'
 
     # is on the original branch
     test "$(git symbolic-ref --short HEAD)" == "dev/update.message" || echo "\`git-sqwish\` moved off of original branch on divergent branch" 1>&2
+
+# A malicious branch
+fixture_dir 'bad-commit-hook'
+
+  # when sqwished and violating pre-commit hook
+  OUTPUT="$($BIN_DIR/git-sqwish master 2>&1)"
+
+    # exits with a non-zero code
+    test "$?" != 0 || echo "$? == 0 for bad pre-commit branch" 1>&2
+
+    # informs user about bad pre-commit branch
+    echo $OUTPUT
+    test "$OUTPUT" == "\`git sqwish\` failed. Rolling back to original branch." || echo "\`git sqwish\` did not inform user of failing on bad pre-commit branch" 1>&2
+
+    # is on the original branch
+    test "$(git symbolic-ref --short HEAD)" == "dev/update.message" || echo "\`git-sqwish\` moved off of original branch on bad pre-commit branch" 1>&2

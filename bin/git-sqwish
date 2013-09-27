@@ -45,8 +45,15 @@ if test -n "$(clean_status)"; then
   exit 1
 fi
 
+# Keep track if $original.sqwished already existed
+sqwished=$original.sqwished
+git rev-parse $sqwished 1> /dev/null 2> /dev/null
+if test $? -ne 0; then
+  sqwished_is_new=1
+fi
+
 # Move to a sqwished branch based off of master
-git checkout -B $original.sqwished $master 1> /dev/null 2> /dev/null
+git checkout -B $sqwished $master 1> /dev/null 2> /dev/null
 
 # Pull over all files from original branch
 git checkout $original -- . 1> /dev/null 2> /dev/null
@@ -86,4 +93,20 @@ EOF
 
   # Open git commit dialog
   git commit
+fi
+
+# If the commit failed
+if test $? -ne 0; then
+  # Rollback to original
+  git reset --hard 1> /dev/null 2> /dev/null
+  git checkout $original 1> /dev/null 2> /dev/null
+
+  # If the sqwished branch did not exist, delete it
+  if test "$sqwished_is_new" == "1"; then
+    echo 1
+  fi
+
+  # Inform user
+  echo "\`git sqwish\` failed. Rolling back to original branch." 1>&2
+  exit 1
 fi

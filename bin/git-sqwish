@@ -23,7 +23,7 @@ if test -z $master; then
   exit 1
 elif ! branch_exists $master; then
 # Otherwise, if the branch doesn't exist, complain and leave
-  echo "nooope"
+  echo "Master branch does not exist." 1>&2
   exit 1
 fi
 

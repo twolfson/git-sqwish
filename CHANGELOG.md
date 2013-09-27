@@ -1,4 +1,6 @@
 # git-sqwish changelog
+0.6.0 - Added rollback when `git sqwish` fails on commit step
+
 0.5.1 - Updated tagline, added screenshot to README
 
 0.5.0 - Moved `message` as a flagged parameter

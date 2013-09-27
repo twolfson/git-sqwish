@@ -15,8 +15,15 @@ elif test "$2" = "-m" || test "$2" = "--message"; then
 fi
 
 # If no master branch is provided, complain and leave
+branch_exists() {
+  git rev-parse $1 1> /dev/null 2> /dev/null
+}
 if test -z $master; then
   echo "Master branch required." 1>&2
+  exit 1
+elif ! branch_exists $master; then
+# Otherwise, if the branch doesn't exist, complain and leave
+  echo "nooope"
   exit 1
 fi
 
@@ -47,8 +54,7 @@ fi
 
 # Keep track if $original.sqwished already existed
 sqwished=$original.sqwished
-git rev-parse $sqwished 1> /dev/null 2> /dev/null
-if test $? -ne 0; then
+if ! branch_exists $sqwished; then
   sqwished_is_new=1
 fi
 

@@ -109,7 +109,6 @@ fixture_dir 'bad-commit-hook'
     test "$?" != 0 || echo "$? == 0 for bad pre-commit branch" 1>&2
 
     # informs user about bad pre-commit branch
-    echo $OUTPUT
     test "$OUTPUT" == "\`git sqwish\` failed. Rolling back to original branch." || echo "\`git sqwish\` did not inform user of failing on bad pre-commit branch" 1>&2
 
     # is on the original branch

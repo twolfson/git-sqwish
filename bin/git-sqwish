@@ -102,7 +102,7 @@ if test $? -ne 0; then
   git checkout $original 1> /dev/null 2> /dev/null
 
   # If the sqwished branch did not exist, delete it
-  if test "$sqwished_is_new" = "1"; then
+  if test $sqwished_is_new -eq 1; then
     git branch -D $sqwished 1> /dev/null 2> /dev/null
   fi
 

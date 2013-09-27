@@ -126,3 +126,13 @@ fixture_dir 'bad-commit-hook'
 
     # is on the original branch
     test "$(git symbolic-ref --short HEAD)" == "dev/update.message" || echo "\`git-sqwish\` moved off of original branch on bad pre-commit branch" 1>&2
+
+  # with a fresh sqwish
+  fixture_dir 'rollback-fresh'
+
+    # does not have a sqwished branch
+
+  # with a second timing sqwish
+  fixture_dir 'rollback-existing'
+
+    # keeps the sqwished branch

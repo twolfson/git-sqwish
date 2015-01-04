@@ -1,6 +1,6 @@
 # git-sqwish [![Build status](https://travis-ci.org/twolfson/git-sqwish.png?branch=master)](https://travis-ci.org/twolfson/git-sqwish)
 
-git squash without repetitive conflicts
+Squash commits without repetitive conflicts
 
 Designed for use with `git merge` during development and avoid `git rebase`'s repetitive conflicts altogether.
 

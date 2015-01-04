@@ -62,7 +62,7 @@ fi
 git checkout -B $sqwished $master 1> /dev/null 2> /dev/null
 
 # Pull over all files from original branch
-git checkout $original -- . 1> /dev/null 2> /dev/null
+git merge --squash $original 1> /dev/null 2> /dev/null
 
 # If there is a message, commit files with message and past commits
 if test -n "$message"; then

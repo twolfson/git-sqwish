@@ -137,3 +137,14 @@ fixture_dir 'bad-commit-hook'
 
     # keeps the sqwished branch
     git checkout dev/update.message.sqwished 1> /dev/null 2> /dev/null || echo "\`git-sqwish\` deleted .sqwished branch for repo with it" 1>&2
+
+# A branch with a deleted file
+fixture_dir 'branch-deleted'
+  # when sqwished with a message
+  $BIN_DIR/git-sqwish master -m "Commit message 1" > /dev/null
+
+    # is sqwished (one commit ahead of `master)
+    test "$(git log master..dev/update.message.sqwished --format=oneline | wc -l)" == "1" || echo "\`git-sqwish\` did not squash commits to one commit in message-ful command" 1>&2
+
+    # does not have the deleted file
+    test "$(cat message.txt)" == "Goodbye Earth ;_;" || echo "\`git-sqwish\` did not copy changes from previous branch in message-ful command" 1>&2

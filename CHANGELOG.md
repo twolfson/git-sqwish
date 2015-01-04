@@ -1,4 +1,6 @@
 # git-sqwish changelog
+0.8.0 - Fixed handling of deleted files
+
 0.7.0 - Added better error message when master branch does not exist
 
 0.6.0 - Added rollback when `git sqwish` fails on commit step

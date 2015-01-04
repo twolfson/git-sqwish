@@ -147,4 +147,7 @@ fixture_dir 'branch-deleted'
     test "$(git log master..dev/update.message.sqwished --format=oneline | wc -l)" == "1" || echo "\`git-sqwish\` did not squash commits to one commit in message-ful command" 1>&2
 
     # does not have the deleted file
-    test "$(cat message.txt)" == "Goodbye Earth ;_;" || echo "\`git-sqwish\` did not copy changes from previous branch in message-ful command" 1>&2
+    ! test -f "message.txt" || echo "\`git-sqwish\` copied deleted file from master branch" 1>&2
+
+    # does have the new file
+    test -f "message2.txt" || echo "\`git-sqwish\` did not create new file from sqwished branch" 1>&2

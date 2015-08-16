@@ -1,4 +1,6 @@
 # git-sqwish changelog
+0.9.0 - Repaired regression when sqwishing from a nested directory and no message
+
 0.8.0 - Fixed handling of deleted files
 
 0.7.0 - Added better error message when master branch does not exist

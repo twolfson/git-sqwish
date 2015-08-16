@@ -43,6 +43,7 @@ fixture_dir 'branch-ahead'
 
   # # when sqwished without a message
   # # TODO: Fix this. https://github.com/twolfson/git-sqwish/issues/1
+  # # TODO: When this is repaired, add a test to verify we operate properly in a nested directory
   # # DEV: In the interim, echo $TMP_DIR and skip "Commit message"
   # # expect $TEST_DIR/expect_tmp.sh 1> /dev/null
   # # cat message.txt

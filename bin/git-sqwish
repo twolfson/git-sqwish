@@ -78,7 +78,8 @@ EOF
 else
 # Otherwise, open a pre-filled commit dialog (via .git/MERGE_MSG)
   # Add informative text
-  cat <<EOF > .git/MERGE_MSG
+  git_dir="$(git rev-parse --git-dir)"
+  cat <<EOF > "$git_dir/MERGE_MSG"
 # Please write a subject for your commit
 # If you don't, the subject will become the first log below
 
@@ -91,9 +92,9 @@ EOF
   i=1
   git log $master..$original --format="%s" | \
   while read log; do
-    echo "# Commit #$i" >> .git/MERGE_MSG
-    echo $log >> .git/MERGE_MSG
-    echo "" >> .git/MERGE_MSG
+    echo "# Commit #$i" >> "$git_dir/MERGE_MSG"
+    echo $log >> "$git_dir/MERGE_MSG"
+    echo "" >> "$git_dir/MERGE_MSG"
     i=$((i+1))
   done
 
